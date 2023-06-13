@@ -14,9 +14,16 @@
 namespace Tablut {
     using namespace tablutConstants;
 
-    class TablutGame: public sf::Drawable{
+    class TablutGame: public sf::Drawable {
     public:
+        TablutGame();
         TablutGame(sf::Color bordCol1, sf::Color bordCol2);
+
+        TablutGame(const TablutGame& other) = delete;
+        TablutGame(TablutGame&& other) = default;
+        ~TablutGame() override = default;
+        TablutGame& operator=(const TablutGame& other) = delete;
+        TablutGame& operator=(TablutGame&& other) = default;
 
         bool getSelected() const { return selected; }
 

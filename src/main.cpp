@@ -1,11 +1,11 @@
-#include <iostream>
 #include <SFML/Graphics.hpp>
 #include "tablutGame.h"
 
 int main(){
     using namespace Tablut;
 
-    TablutGame tablut(sf::Color(0xf3bc7aff), sf::Color(0xae722bff));
+    TablutGame tablut{sf::Color(0xf3bc7aff), sf::Color(0xae722bff)};
+//    TablutGame tablut{};
 
     unsigned windowHeight = boardHeight;
     unsigned windowWidth = boardWidth + 256;

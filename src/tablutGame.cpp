@@ -2,6 +2,7 @@
 #include <functional>
 
 namespace Tablut {
+    TablutGame::TablutGame(): TablutGame{sf::Color::White, sf::Color::Black} {};
 
     TablutGame::TablutGame(sf::Color bordCol1, sf::Color bordCol2)
         : graphicBoard(bordCol1, bordCol2) {
@@ -88,6 +89,7 @@ namespace Tablut {
         whiteWin = false;
         turn = 1;
 
+        lastMove.clear();
         clearBoard();
         setupBoard();
 
@@ -205,7 +207,7 @@ namespace Tablut {
 
         auto calcMovesInDirection = [this](const std::function<int (int)>& move, int startingPos) {
             for (int nextPos = move(startingPos); nextPos != -1; nextPos = move(nextPos)) {
-                if (board[nextPos] != nullptr)
+                if (board[nextPos] != nullptr || nextPos == numSquares / 2)
                     break;
                 board[startingPos]->addPossibleMove(nextPos);
             }
